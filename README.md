@@ -194,6 +194,25 @@ Backend: http://localhost:8080
 
 ---
 
+## Screenshots
+
+### Search Suggestions
+![Search Suggestions](docs/screenshots/suggestions.png)
+
+### Metrics Panel
+![Metrics Panel](docs/screenshots/metrics.png)
+
+### Trending Queries
+![Trending](docs/screenshots/trending.png)
+
+---
+
+## Demo
+
+[Watch demo video](docs/demo.mp4)
+
+---
+
 ## Performance Benchmarks (local machine)
 
 | Metric | Observed |
