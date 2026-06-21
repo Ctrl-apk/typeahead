@@ -1,0 +1,339 @@
+/* ── Reset & Base ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0f0f1a;
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+/* ── Layout ───────────────────────────────────────────────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 16px 40px;
+  min-height: 100vh;
+}
+
+/* ── Hero Header ──────────────────────────────────────────────────── */
+.hero {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+.hero p {
+  color: #64748b;
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+/* ── Search Container ─────────────────────────────────────────────── */
+.search-wrapper {
+  width: 100%;
+  max-width: 620px;
+  position: relative;
+}
+
+.search-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  padding: 14px 18px;
+  font-size: 1rem;
+  background: #1e1e2e;
+  border: 1.5px solid #2d2d44;
+  border-radius: 12px;
+  color: #e2e8f0;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input::placeholder {
+  color: #4a5568;
+}
+
+.search-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.search-input.error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.search-btn {
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.search-btn:hover {
+  opacity: 0.88;
+}
+
+.search-btn:active {
+  transform: scale(0.97);
+}
+
+.search-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Status messages ──────────────────────────────────────────────── */
+.status-message {
+  margin-top: 10px;
+  font-size: 0.875rem;
+  min-height: 20px;
+  text-align: center;
+}
+
+.status-message.success { color: #4ade80; }
+.status-message.error   { color: #f87171; }
+
+/* ── Loading Spinner ──────────────────────────────────────────────── */
+.loading-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #2d2d44;
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Suggestions Dropdown ─────────────────────────────────────────── */
+.suggestions-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #1e1e2e;
+  border: 1.5px solid #2d2d44;
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 100;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.suggestions-list {
+  list-style: none;
+}
+
+.suggestions-list li {
+  padding: 12px 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  transition: background 0.15s;
+  border-bottom: 1px solid #2d2d44;
+}
+
+.suggestions-list li:last-child {
+  border-bottom: none;
+}
+
+.suggestions-list li:hover,
+.suggestions-list li.active {
+  background: #2d2d44;
+  color: #fff;
+}
+
+.suggestion-icon {
+  color: #6366f1;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.suggestion-count {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: #475569;
+  background: #0f0f1a;
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+/* ── Trending Section ─────────────────────────────────────────────── */
+.trending-section {
+  width: 100%;
+  max-width: 620px;
+  margin-top: 40px;
+}
+
+.trending-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.trending-header span.icon {
+  font-size: 1rem;
+}
+
+.trending-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.trending-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #1e1e2e;
+  border: 1.5px solid #2d2d44;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.trending-chip:hover {
+  border-color: #6366f1;
+  background: #2d2d44;
+  color: #fff;
+}
+
+.trending-chip .rank {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #6366f1;
+}
+
+/* ── Metrics Panel ────────────────────────────────────────────────── */
+.metrics-panel {
+  width: 100%;
+  max-width: 620px;
+  margin-top: 40px;
+  background: #1e1e2e;
+  border: 1.5px solid #2d2d44;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.metrics-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid #2d2d44;
+  cursor: pointer;
+  user-select: none;
+}
+
+.metrics-header h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.metrics-header .toggle-icon {
+  color: #475569;
+  transition: transform 0.2s;
+}
+
+.metrics-header .toggle-icon.open {
+  transform: rotate(180deg);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #2d2d44;
+}
+
+.metric-card {
+  background: #1e1e2e;
+  padding: 16px;
+  text-align: center;
+}
+
+.metric-card .metric-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #a78bfa;
+}
+
+.metric-card .metric-label {
+  font-size: 0.72rem;
+  color: #475569;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.metrics-refresh {
+  padding: 10px 20px;
+  border-top: 1px solid #2d2d44;
+  text-align: right;
+}
+
+.metrics-refresh button {
+  background: none;
+  border: none;
+  color: #6366f1;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.metrics-refresh button:hover {
+  background: #2d2d44;
+}
