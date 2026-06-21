@@ -1,7 +1,6 @@
 import { useState, useCallback } from "react";
 import SearchBox from "./components/SearchBox";
 import Trending from "./components/Trending";
-import MetricsPanel from "./components/MetricsPanel";
 import "./App.css";
 
 function App() {
@@ -39,9 +38,6 @@ function App() {
                 refreshKey={trendingRefreshKey}
                 onSelect={handleTrendingSelect}
             />
-
-            {/* ── Performance Metrics Panel ─────────────────────────── */}
-            <MetricsPanel />
         </div>
     );
 }
