@@ -148,10 +148,12 @@ The system is seeded with a real-world sanitized e-commerce search query dataset
 
 #### Option 1 — Bulk load via COPY (recommended for full dataset)
 
-1. Copy the CSV file into the running PostgreSQL container:
+The dataset is included in the repository at `data/queries.csv`.
+
+1. Copy the file into the running PostgreSQL container:
 
 ```bash
-docker cp queries.csv <postgres-container-id>:/queries.csv
+docker cp data/queries.csv <postgres-container-id>:/queries.csv
 ```
 
 2. Connect to the database and run:
