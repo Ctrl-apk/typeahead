@@ -157,21 +157,60 @@ Live performance dashboard.
 
 ## Dataset
 
-No external dataset is required. The system is self-populating:
-- Every POST /search adds a record to `search_queries`
-- Counts accumulate over time, naturally producing trending and suggestion data
-- For demo purposes, seed with:
+The system is seeded with a real-world sanitized e-commerce search query dataset containing **129,346 unique queries** with their historical search counts.
+
+**Format:** CSV with two columns — `query`, `count`
+
+**Sample entries:**
+
+| Query | Count |
+|---|---|
+| airpods | 233 |
+| tv | 214 |
+| laptop | 209 |
+| ipad | 181 |
+| ssd | 176 |
+| apple watch | 160 |
+| shoes | 158 |
+| printer | 152 |
+| nike | 150 |
+| iphone | 144 |
+| kindle | 144 |
+| wireless earbuds | 136 |
+| monitor | 127 |
+
+**Loading the dataset:**
+
+1. Place your CSV file (e.g. `queries.csv`) somewhere accessible to the database container.
+2. Run the following SQL to bulk-load it:
+
+```sql
+COPY search_queries (query, count)
+FROM '/path/to/queries.csv'
+DELIMITER ','
+CSV HEADER;
+
+-- Backfill last_searched to now for all imported rows
+UPDATE search_queries SET last_searched = NOW() WHERE last_searched IS NULL;
+```
+
+Alternatively, seed a representative subset manually:
 
 ```sql
 INSERT INTO search_queries (query, count, last_searched) VALUES
-  ('apple',    500,  NOW() - INTERVAL '1 hour'),
-  ('amazon',   430,  NOW() - INTERVAL '2 hours'),
-  ('android',  380,  NOW() - INTERVAL '30 minutes'),
-  ('apache',   210,  NOW() - INTERVAL '3 days'),
-  ('azure',    190,  NOW() - INTERVAL '5 hours'),
-  ('netflix',  340,  NOW() - INTERVAL '45 minutes'),
-  ('nodejs',   280,  NOW() - INTERVAL '2 hours'),
-  ('nextjs',   220,  NOW() - INTERVAL '1 day');
+  ('airpods',          233, NOW() - INTERVAL '1 hour'),
+  ('tv',               214, NOW() - INTERVAL '2 hours'),
+  ('laptop',           209, NOW() - INTERVAL '30 minutes'),
+  ('ipad',             181, NOW() - INTERVAL '3 hours'),
+  ('ssd',              176, NOW() - INTERVAL '5 hours'),
+  ('apple watch',      160, NOW() - INTERVAL '45 minutes'),
+  ('shoes',            158, NOW() - INTERVAL '2 hours'),
+  ('printer',          152, NOW() - INTERVAL '1 day'),
+  ('nike',             150, NOW() - INTERVAL '3 hours'),
+  ('iphone',           144, NOW() - INTERVAL '20 minutes'),
+  ('kindle',           144, NOW() - INTERVAL '4 hours'),
+  ('wireless earbuds', 136, NOW() - INTERVAL '6 hours'),
+  ('monitor',          127, NOW() - INTERVAL '2 days');
 ```
 
 ---
