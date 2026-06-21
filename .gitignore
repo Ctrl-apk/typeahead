@@ -7,15 +7,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Frontend dependencies and build
 node_modules
 dist
 dist-ssr
 *.local
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+.vscode/
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
@@ -23,4 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-.gitignore
+# Maven build output
+backend/demo/target/
