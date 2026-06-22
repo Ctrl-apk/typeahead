@@ -249,7 +249,7 @@ Backend: http://localhost:8080
 ![Trending](docs/screenshots/trending.png)
 
 ### Search Response
-![Search Response](docs/screenshots/search-reponse.png)
+![Search Response](docs/screenshots/search-response.png)
 
 ### Cache Debug
 ![Cache Debug](docs/screenshots/cache-debug.png)
