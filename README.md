@@ -245,17 +245,17 @@ Backend: http://localhost:8080
 ### Search Suggestions
 ![Search Suggestions](docs/screenshots/suggestions.png)
 
-### Metrics Panel
-![Metrics Panel](docs/screenshots/metrics.png)
-
 ### Trending Queries
 ![Trending](docs/screenshots/trending.png)
 
----
+### Search Response
+![Search Response](docs/screenshots/search-reponse.png)
 
-## Demo
+### Cache Debug
+![Cache Debug](docs/screenshots/cache-debug.png)
 
-[Watch demo video](docs/demo.mp4)
+### Metrics Panel
+![Metrics Panel](docs/screenshots/metrics.png)
 
 ---
 
